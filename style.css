@@ -327,7 +327,7 @@ button:active {
 @media (max-width: 768px) {
     .container {
         width: 360px;
-        height: 560px;
+        height: 595px;
         padding: 5px;
         margin: 5px;
     }
