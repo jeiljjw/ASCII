@@ -75,6 +75,74 @@ charOutput.addEventListener('click', () => {
     }
 });
 
+// PWA 설치 관련 변수
+let deferredPrompt;
+
+// PWA 설치 버튼 생성 및 표시
+function showInstallButton() {
+    // 이미 설치 버튼이 있으면 제거
+    const existingButton = document.getElementById('install-button');
+    if (existingButton) {
+        existingButton.remove();
+    }
+
+    // 설치 버튼 생성
+    const installButton = document.createElement('button');
+    installButton.id = 'install-button';
+    installButton.innerHTML = '📱 앱 설치';
+    installButton.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        padding: 12px 20px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        z-index: 1000;
+        transition: transform 0.2s ease;
+    `;
+
+    installButton.addEventListener('click', async () => {
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            console.log(`PWA 설치 결과: ${outcome}`);
+            deferredPrompt = null;
+            installButton.remove();
+        }
+    });
+
+    document.body.appendChild(installButton);
+}
+
+// PWA 설치 이벤트 리스너
+window.addEventListener('beforeinstallprompt', (e) => {
+    console.log('PWA 설치 가능');
+    e.preventDefault();
+    deferredPrompt = e;
+    showInstallButton();
+});
+
+// PWA가 설치되었을 때
+window.addEventListener('appinstalled', () => {
+    console.log('PWA 설치 완료');
+    deferredPrompt = null;
+    const installButton = document.getElementById('install-button');
+    if (installButton) {
+        installButton.remove();
+    }
+});
+
+// 앱이 이미 설치되었는지 확인
+if (window.matchMedia('(display-mode: standalone)').matches) {
+    console.log('PWA가 이미 설치되어 실행 중');
+}
+
 // Initial value setup
 window.addEventListener('load', () => {
     asciiChar.value = 'ABC';
