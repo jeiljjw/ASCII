@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#667eea">
+    <meta name="description" content="Convert ASCII characters to hexadecimal values">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="ASCII Converter">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>ASCII CONVERTER</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon-192.png">
+</head>
+<body>
+    <!-- Top Banner -->
+    <header class="top-banner">
+        <ins class="kakao_ad_area" style="display:none;"
+        data-ad-unit = "DAN-"
+        data-ad-width = "320"
+        data-ad-height = "50"></ins>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <h1>ASCII CONVERTER</h1>
+
+
+            <div class="converter-section">
+                <div class="sub-section">
+                    <h3>Character → Hex</h3>
+                    <div class="input-group">
+                        <label for="asciiChar">Char:</label>
+                        <input type="text" id="asciiChar" placeholder="ABC">
+                    </div>
+                    <div class="input-group">
+                        <label for="hexValue">Hex:</label>
+                        <input type="text" id="hexValue" readonly>
+                    </div>
+                </div>
+
+                <div class="sub-section">
+                    <h3>Hex → Character</h3>
+                    <div class="input-group">
+                        <label for="codeInput">Hex:</label>
+                        <input type="text" id="codeInput" placeholder="41 42 43">
+                    </div>
+                    <div class="input-group">
+                        <label for="charOutput">Char:</label>
+                        <input type="text" id="charOutput" readonly>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Bottom Banner -->
+    <footer class="bottom-banner">
+        <ins class="kakao_ad_area" style="display:none;"
+        data-ad-unit = "DAN-"
+        data-ad-width = "320"
+        data-ad-height = "50"></ins>
+    </footer>
+
+    <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+    <script src="script.js"></script>
+</body>
+</html>
