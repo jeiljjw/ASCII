@@ -28,7 +28,7 @@ body::before {
 
 /* Banner section styles */
 .top-banner, .bottom-banner {
-    padding: 10px 0;
+    padding: 1px 0;
     text-align: center;
     z-index: 10;
     position: relative;
@@ -48,7 +48,7 @@ body::before {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 2px;
 }
 
 /* Kakao banner styles */
@@ -68,7 +68,7 @@ body::before {
     padding: 5px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 5);
     width: 360px;
-    height: 640px;
+    height: 630px;
     max-width: none;
     display: flex;
     flex-direction: column;
@@ -327,7 +327,7 @@ button:active {
 @media (max-width: 768px) {
     .container {
         width: 360px;
-        height: 600px;
+        height: 595px;
         padding: 5px;
         margin: 5px;
     }
