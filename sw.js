@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ascii-converter-v1';
+const CACHE_NAME = 'ascii-converter-v2';
 const urlsToCache = [
   '/',
   '/index.html',
