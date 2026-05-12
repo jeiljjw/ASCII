@@ -1,16 +1,17 @@
 const CACHE_NAME = 'ascii-converter-v2';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/style.css',
-  '/script.js',
-  '/manifest.json',
-  '/icon-192.png',
-  '/icon-512.png'
+  './',
+  'index.html',
+  'style.css',
+  'script.js',
+  'manifest.json',
+  'icon-192.png',
+  'icon-512.png'
 ];
 
 // 설치 이벤트
 self.addEventListener('install', event => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
@@ -22,15 +23,18 @@ self.addEventListener('install', event => {
 // 활성화 이벤트
 self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheName !== CACHE_NAME) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
+    Promise.all([
+      self.clients.claim(),
+      caches.keys().then(cacheNames => {
+        return Promise.all(
+          cacheNames.map(cacheName => {
+            if (cacheName !== CACHE_NAME) {
+              return caches.delete(cacheName);
+            }
+          })
+        );
+      })
+    ])
   );
 });
 
@@ -48,4 +52,4 @@ self.addEventListener('fetch', event => {
       }
     )
   );
-});
+});
